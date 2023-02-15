@@ -19,5 +19,5 @@ jobs:
           upstream_repo: https://github.com/tidev/titanium_mobile.git # change this
           upstream_branch: master # change this
           downstream_branch: master # change this
-          token: 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
+          token: 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
 
