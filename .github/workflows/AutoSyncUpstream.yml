@@ -5,25 +5,19 @@ env:
   UPSTREAM_BRANCH: "master"
 
 on:
-  workflow_dispatch:
   schedule: 
   - cron: "0 0 * * *"
+  workflow_dispatch:
   
 jobs:
-  Check-For-Changes:
-    name: Check for changes
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Synchronize from Upstream
-        uses: dabreadman/sync-upstream-repo@v1.0.0.b
-        with:
-          upstream_repo: ${{ env.UPSTREAM_URL }}
-          upstream_branch: ${{ env.UPSTREAM_BRANCH }}
-          downstream_branch: ""
-          # GitHub Bot token
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch_args: ""
-          merge_args: ""
-          push_args: ""
-          spawn_logs: ""
+      - name: GitHub Sync to Upstream Repository
+        uses: rovast/sync-upstream-repo@v0.0.1
+        with: 
+          upstream_repo: https://github.com/tidev/titanium_mobile.git # change this
+          upstream_branch: master # change this
+          downstream_branch: master # change this
+          token: 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
+
